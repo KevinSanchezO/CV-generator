@@ -1,22 +1,28 @@
 function LanguagesInfo(props) {
-    const {data} = props;
+    const {data, submitLanguageInfo, updateLanguage, deleteLanguage} = props;
 
     return (
         <>
             <h1 className="lang-into-title">Languages</h1>
-
-            {data.map((lamg) => {
+            
+            {data.map((i) =>{
                 return (
-                    <li>
-                    <input name="lang-name" type="text"/>
-                    <button className="btn-save-lang">Save</button>
-                    <button className="btn-delete-lang">Delete</button>
-                    </li>
+                    <div key={i.id}>
+                            <form key={i.id} onSubmit={(e) => updateLanguage(e, i.id)}>
+                                <input placeholder="Language" defaultValue={i.language}></input>
+                                <div className="btn-lang-list-container">
+                                    <button type="submit" className="btn-update-lang">Update</button>
+                                    <button className="btn-del-lang" onClick={(e) => deleteLanguage(i.id)}>Delete</button>
+                                </div>
+                            </form>
+                    </div>
                 )
             })}
 
-            <input name='lang' type="text" placeholder="Language"/>
-            <button className="btn-add-lang">Add</button>
+            <form onSubmit={submitLanguageInfo}>
+                <input className="input-add-lang" placeholder="Language"></input>
+                <button className="btn-add-lang" type="submit">Add</button>
+            </form>
         </>
     )
 }

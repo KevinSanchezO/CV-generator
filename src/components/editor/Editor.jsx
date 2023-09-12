@@ -1,23 +1,21 @@
-import github from '../../assets/github.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+
 import PersonalInfo from './PersonalInfo';
 import ContactInfo from './ContactInfo';
 import EducationalInfo from './EducationInfo';
 import ExperienceInfo from './ExperienceInfo';
-
 import LanguagesInfo from './LanguagesInfo';
 
 function Editor(props) {
-
     const {
         formData,
         handlePersonalInfoChange,
         handleContactInfoChange,
+        submitLanguageInfo,
+        updateLanguage, 
+        deleteLanguage,
     } = props;
-
-    const smallGitHubIconStyle = {
-        width: '32px', 
-        height: '32px',
-    };
 
     return (
         <div className='editor'>
@@ -28,8 +26,7 @@ function Editor(props) {
                 </p>
 
                 <a className='header-github' href='https://github.com/KevinSanchezO/CV-generator' target="_blank">
-                    <p>Made by Kevin Sánchez</p>
-                    <img src={github} id="footer-img" alt="GitHub Logo" style={smallGitHubIconStyle}/>
+                    <p><FontAwesomeIcon icon={faGithub}/> Made by Kevin Sánchez</p>
                 </a>
             </header>
 
@@ -43,8 +40,11 @@ function Editor(props) {
         
             <ExperienceInfo data={formData.experienceInfo}/>
 
-            <LanguagesInfo data={formData.languages} />
-
+            <LanguagesInfo data={formData.languages}
+            submitLanguageInfo={submitLanguageInfo}
+            updateLanguage = {updateLanguage}
+            deleteLanguage = {deleteLanguage}
+            />
         </div>
     )
 }
