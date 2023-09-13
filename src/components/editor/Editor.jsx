@@ -12,6 +12,12 @@ function Editor(props) {
         formData,
         handlePersonalInfoChange,
         handleContactInfoChange,
+        submitEducationInfo,
+        updateEducation,
+        deleteEducation,
+        submitExpInfo,
+        updateExp,
+        deleteExp,
         submitLanguageInfo,
         updateLanguage, 
         deleteLanguage,
@@ -36,9 +42,15 @@ function Editor(props) {
             <ContactInfo data={formData.contactInfo} 
             handleChange={handleContactInfoChange} />
 
-            <EducationalInfo data={formData.educationalInfo} />
+            <EducationalInfo data={formData.educationalInfo} 
+            submitEducationInfo = {submitEducationInfo}
+            updateEducation = {updateEducation}
+            deleteEducation = {deleteEducation}/>
         
-            <ExperienceInfo data={formData.experienceInfo}/>
+            <ExperienceInfo data={formData.experienceInfo}
+            submitExpInfo = {submitExpInfo}
+            updateExp = {updateExp}
+            deleteExp = {deleteExp}/>
 
             <LanguagesInfo data={formData.languages}
             submitLanguageInfo={submitLanguageInfo}
