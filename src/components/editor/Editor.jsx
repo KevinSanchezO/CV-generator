@@ -5,19 +5,28 @@ import PersonalInfo from './PersonalInfo';
 import ContactInfo from './ContactInfo';
 import EducationalInfo from './EducationInfo';
 import ExperienceInfo from './ExperienceInfo';
+import SkillInfo from './SkillInfo';
 import LanguagesInfo from './LanguagesInfo';
 
 function Editor(props) {
     const {
         formData,
         handlePersonalInfoChange,
+
         handleContactInfoChange,
+
         submitEducationInfo,
         updateEducation,
         deleteEducation,
+
         submitExpInfo,
         updateExp,
         deleteExp,
+
+        submitSkillInfo, 
+        updateSkillInfo, 
+        deleteSkill,
+
         submitLanguageInfo,
         updateLanguage, 
         deleteLanguage,
@@ -51,6 +60,11 @@ function Editor(props) {
             submitExpInfo = {submitExpInfo}
             updateExp = {updateExp}
             deleteExp = {deleteExp}/>
+
+            <SkillInfo data={formData.skills}
+            submitSkillInfo={submitSkillInfo} 
+            updateSkillInfo={updateSkillInfo} 
+            deleteSkill={deleteSkill}/>
 
             <LanguagesInfo data={formData.languages}
             submitLanguageInfo={submitLanguageInfo}

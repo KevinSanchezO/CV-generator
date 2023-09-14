@@ -6,7 +6,7 @@ function ExperienceInfoView(prop) {
             <ul>
                 {data.map((i) => {
                     return (
-                        <div>
+                        <div >
                             <h3>{i.position}, {i.company}</h3>
                             <p>{i.startDate} - {i.endDate}</p>
                             <p>{i.description}</p>

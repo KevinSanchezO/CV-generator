@@ -157,6 +157,52 @@ function App() {
   }
 
 
+  const submitSkillInfo = (e) => {
+    e.preventDefault();
+    const id = uuidv4(); //to identify the language and delete or modify
+    const titleSkillSection = e.target[0].value;
+    const contentSkill = e.target[1].value;
+
+    const formDataCopy = {...formData};
+    formDataCopy.skills.push({id, titleSkillSection, contentSkill});
+
+    setFormData(formDataCopy);
+    clear(e);
+  }
+
+  const updateSkillInfo = (e, id) => {
+    e.preventDefault();
+
+    const titleSkillSection = e.target[0].value;
+    const contentSkill = e.target[1].value;
+
+    setFormData((prevData) => {
+      const updatedFormData = {...prevData};
+      updatedFormData.skills = updatedFormData.skills.map((skillItem) => {
+        if (skillItem.id === id) {
+          return { ...skillItem,
+            titleSkillSection: titleSkillSection,
+            contentSkill: contentSkill
+          };
+        }
+        return skillItem;
+      })
+      return updatedFormData;
+    })
+  }
+
+  const deleteSkill = (id) => {
+    setFormData((prevData) => {
+      const updatedFormData = {...prevData};
+
+      updatedFormData.skills = updatedFormData.skills.filter((skill) =>{
+        return skill.id != id;
+      });
+
+      return updatedFormData;
+    });
+  }
+
   /*
   adds new information to the list regarding languages
   */
@@ -227,6 +273,10 @@ function App() {
               submitExpInfo = {submitExpInfo}
               updateExp = {updateExp}
               deleteExp = {deleteExp}
+
+              submitSkillInfo = {submitSkillInfo}
+              updateSkillInfo = {updateSkillInfo} 
+              deleteSkill = {deleteSkill}
 
               submitLanguageInfo = {submitLanguageInfo}
               updateLanguage = {updateLanguage}
