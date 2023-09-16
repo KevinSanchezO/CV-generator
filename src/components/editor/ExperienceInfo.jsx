@@ -3,7 +3,7 @@ function ExperienceInfo(props) {
 
     return (
         <>
-            <h1 className="experience-info-title">Experience</h1>
+            <h1>Experience</h1>
             
             {data.map((i) => {
                 return (
@@ -14,8 +14,8 @@ function ExperienceInfo(props) {
                             <input name="startDate" type="text" defaultValue={i.startDate}/>
                             <input name="endDate" type="text" defaultValue={i.endDate}/>
                             <textarea name="description" defaultValue={i.description}/>
-                            <button type="submit" className="btn-save-experience">Update</button>
-                            <button className="btn-delete-experience" onClick={(e) => deleteExp(i.id)}>Delete</button>
+                            <button type="submit" className="btn-update">Update</button>
+                            <button className="btn-delete" onClick={(e) => deleteExp(i.id)}>Delete</button>
                         </form>
                     </div>
                 )
@@ -27,7 +27,7 @@ function ExperienceInfo(props) {
                 <input name="startDate" type="text" placeholder="Start Date (mm/yyyy)"/>
                 <input name="endDate" type="text" placeholder="End Year (mm/yyyy or On-going)"/>
                 <textarea name="description" placeholder="Description"/>
-                <button type="submit" className="btn-add-experience">Add</button>
+                <button type="submit" className="btn-add">Add</button>
             </form>
         </>
     )

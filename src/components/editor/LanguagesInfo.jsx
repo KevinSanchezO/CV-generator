@@ -3,7 +3,7 @@ function LanguagesInfo(props) {
 
     return (
         <>
-            <h1 className="lang-into-title">Languages</h1>
+            <h1>Languages</h1>
             
             {data.map((i) =>{
                 return (
@@ -11,8 +11,8 @@ function LanguagesInfo(props) {
                             <form key={i.id} onSubmit={(e) => updateLanguage(e, i.id)}>
                                 <input placeholder="Language" defaultValue={i.language}></input>
                                 <div className="btn-lang-list-container">
-                                    <button type="submit" className="btn-update-lang">Update</button>
-                                    <button className="btn-del-lang" onClick={(e) => deleteLanguage(i.id)}>Delete</button>
+                                    <button type="submit" className="btn-update">Update</button>
+                                    <button className="btn-delete" onClick={(e) => deleteLanguage(i.id)}>Delete</button>
                                 </div>
                             </form>
                     </div>
@@ -20,8 +20,8 @@ function LanguagesInfo(props) {
             })}
 
             <form onSubmit={submitLanguageInfo}>
-                <input className="input-add-lang" placeholder="Language"></input>
-                <button className="btn-add-lang" type="submit">Add</button>
+                <input placeholder="Language"></input>
+                <button className="btn-add" type="submit">Add</button>
             </form>
         </>
     )

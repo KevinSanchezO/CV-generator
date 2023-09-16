@@ -1,9 +1,32 @@
-import { useState, useEffect } from 'react'
-import Editor from './components/editor/Editor'
-import Preview from './components/preview/Preview'
+import { useState} from 'react'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+
+// Editor Components
+import PersonalInfo from './components/editor/PersonalInfo';
+import ContactInfo from './components/editor/ContactInfo';
+import EducationalInfo from './components/editor/EducationInfo';
+import ExperienceInfo from './components/editor/ExperienceInfo';
+import SkillInfo from './components/editor/SkillInfo';
+import LanguagesInfo from './components/editor/LanguagesInfo';
+
+// Preview Components
+import PersonalInfoView from "./components/preview/PersonalInfoView";
+import ContactInfoView from "./components/preview/ContactInfoView";
+import EducationalInfoView from "./components/preview/EducationInfoView";
+import ExperienceInfoView from "./components/preview/ExperienceInfoView";
+import SkillInfoView from "./components/preview/SkillInfoView";
+import LanguageInfoView from "./components/preview/LanguageInfoView";
+
+//css
+import './app.css'
+
 import { v4 as uuidv4 } from "uuid";
+import ReactToPrint from "react-to-print";
 
 function App() {
+  let componentRef = null;
   const [formData, setFormData] = useState(
     {
       personalInfo: {
@@ -262,27 +285,62 @@ function App() {
 
   return (
     <div className='app'>
-      <Editor formData={formData}
-              handlePersonalInfoChange = {handlePersonalInfoChange}
-              handleContactInfoChange = {handleContactInfoChange}
+      <div className='editor'>
+        <header>
+          <h1>CV generator</h1>
+            <p className='header-description'>
+              Create your CV filling the forms and check its changes dinamically in the preview
+            </p>
 
-              submitEducationInfo = {submitEducationInfo}
-              updateEducation = {updateEducation}
-              deleteEducation = {deleteEducation}
+            <a className='header-github' href='https://github.com/KevinSanchezO/CV-generator' target="_blank">
+              <p><FontAwesomeIcon icon={faGithub}/> Made by Kevin Sánchez</p>
+            </a>
+        </header>
 
-              submitExpInfo = {submitExpInfo}
-              updateExp = {updateExp}
-              deleteExp = {deleteExp}
+            <PersonalInfo data={formData.personalInfo} 
+            handleChange={handlePersonalInfoChange}/>
+            
+            <ContactInfo data={formData.contactInfo} 
+            handleChange={handleContactInfoChange} />
 
-              submitSkillInfo = {submitSkillInfo}
-              updateSkillInfo = {updateSkillInfo} 
-              deleteSkill = {deleteSkill}
+            <EducationalInfo data={formData.educationalInfo} 
+            submitEducationInfo = {submitEducationInfo}
+            updateEducation = {updateEducation}
+            deleteEducation = {deleteEducation}/>
+        
+            <ExperienceInfo data={formData.experienceInfo}
+            submitExpInfo = {submitExpInfo}
+            updateExp = {updateExp}
+            deleteExp = {deleteExp}/>
 
-              submitLanguageInfo = {submitLanguageInfo}
-              updateLanguage = {updateLanguage}
-              deleteLanguage = {deleteLanguage}
-              />
-      <Preview formData={formData}/>
+            <SkillInfo data={formData.skills}
+            submitSkillInfo={submitSkillInfo} 
+            updateSkillInfo={updateSkillInfo} 
+            deleteSkill={deleteSkill}/>
+
+            <LanguagesInfo data={formData.languages}
+            submitLanguageInfo={submitLanguageInfo}
+            updateLanguage = {updateLanguage}
+            deleteLanguage = {deleteLanguage}/>
+
+            <ReactToPrint
+              trigger={() => {
+                return <button className='btn-print'>Print CV</button>
+              }}
+              content={() => componentRef}
+              documentTitle= 'CV'
+            />
+      </div>
+
+      <div className='preview' ref={(el) => (componentRef = el)}>
+            <PersonalInfoView data={formData.personalInfo}/>
+            <ContactInfoView data={formData.contactInfo}/>
+            <EducationalInfoView data={formData.educationalInfo}/>
+            <ExperienceInfoView data={formData.experienceInfo}/>
+            <SkillInfoView data={formData.skills}/>
+            <LanguageInfoView data={formData.languages}/>
+      </div>
+      
     </div>
   )
 }

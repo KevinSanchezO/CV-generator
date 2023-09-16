@@ -1,0 +1,112 @@
+:root {
+    --lightGrey: #e7e7e7;
+    --black: #0a0a0a;
+    --red: #ff6f61;
+    --blue: #3b86ff;
+    --grey: #4b566b;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+    color: var(--black);
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app {
+    width: 70%;
+    height: 70%;
+    justify-content: center;
+    gap: 50px;
+    display: flex;
+}
+
+.editor {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--lightGrey);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    flex: 1;
+    margin: 0 5px;
+    max-height: 885px; 
+    overflow-y: auto;
+}
+
+input{
+    min-height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 10 10px;
+    margin-bottom: 10px;
+    min-width: 100%;
+    display: block;
+}
+input:active{
+    border: 2px solid var(--black);
+}
+
+textarea {
+    height: 100px;
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    border:none;
+    padding: 10 10px;
+    margin-bottom: 10px;
+}
+
+.btn-add {
+    border: none;
+    color: white;
+    background-color: var(--black);
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 90%;
+    width: 100%;
+    
+}
+.btn-add:hover {
+    opacity: 100%;
+}
+
+.btn-update {
+    border: none;
+    width: 50%;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: var(--blue);
+    opacity: 80%;
+}
+.btn-update:hover {
+    opacity: 100%;
+}
+
+
+.btn-delete {
+    border: none;
+    width: 50%;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: var(--red);
+    opacity: 85%;
+}
+.btn-delete:hover {
+    opacity: 100%;
+}
+
+
+
+.preview {
+    flex: 1;
+    margin: 0 5px;
+}

@@ -3,7 +3,7 @@ function EducationalInfo(props) {
 
     return (
         <>
-            <h1 className="education-info-title">Education</h1>
+            <h1>Education</h1>
             
             {data.map((i) => {
                 return (
@@ -13,8 +13,8 @@ function EducationalInfo(props) {
                             <input name="institute" type="text" defaultValue={i.institute}/>
                             <input name="startDate" type="text" defaultValue={i.startDate}/>
                             <input name="graduateDate" type="text" defaultValue={i.graduateDate}/>
-                            <button type="submit" className="btn-save-education">Update</button>
-                            <button className="btn-delete-education" onClick={(e) => deleteEducation(i.id)}>Delete</button>
+                            <button type="submit" className="btn-update">Update</button>
+                            <button className="btn-delete" onClick={(e) => deleteEducation(i.id)}>Delete</button>
                         </form>
                     </div>
                 )
@@ -25,7 +25,7 @@ function EducationalInfo(props) {
                 <input name="institute" type="text" placeholder="Institute"/>
                 <input name="startDate" type="text" placeholder="Start Year (mm/yyyy)"/>
                 <input name="graduateDate" type="text" placeholder="Graduate Year (mm/yyyy or On-going)"/>
-                <button className="btn-add-education" type="submit">Add</button>
+                <button className="btn-add" type="submit">Add</button>
             </form>
         </>
     )

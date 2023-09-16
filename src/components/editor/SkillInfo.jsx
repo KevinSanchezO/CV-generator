@@ -5,7 +5,7 @@ function SkillInfo(props) {
 
     return (
         <>
-            <h1 className="skill-info-title">Skills</h1>
+            <h1>Skills</h1>
             
             {data.map((i) => {
                 return (
@@ -13,8 +13,8 @@ function SkillInfo(props) {
                         <form key={i.id} onSubmit={(e) => updateSkillInfo(e, i.id)}>
                             <input name="titleSkillSection" type="text" defaultValue={i.titleSkillSection}></input>
                             <textarea name="contentSkill" defaultValue={i.contentSkill}></textarea>
-                            <button type="submit" className="btn-save-skill">Update</button>
-                            <button className="btn-delete-skill" onClick={(e) => deleteSkill(i.id)}>Delete</button>
+                            <button type="submit" className="btn-update">Update</button>
+                            <button className="btn-delete" onClick={(e) => deleteSkill(i.id)}>Delete</button>
                         </form>
                     </div>
                 )
@@ -23,7 +23,7 @@ function SkillInfo(props) {
             <form onSubmit={submitSkillInfo}>
                 <input name="titleSkillSection" type="text" placeholder="Skill section title"></input>
                 <textarea name="contentSkill" placeholder={textPlaceholder}></textarea>
-                <button type="submit" className="btn-add-skill">Add</button>
+                <button type="submit" className="btn-add">Add</button>
             </form>
         </>
     )
