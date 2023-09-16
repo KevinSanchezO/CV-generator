@@ -38,6 +38,12 @@
     overflow-y: auto;
 }
 
+.header-editor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 input{
     min-height: 40px;
     border-radius: 5px;
@@ -89,7 +95,6 @@ textarea {
     opacity: 100%;
 }
 
-
 .btn-delete {
     border: none;
     width: 50%;
@@ -104,9 +109,58 @@ textarea {
     opacity: 100%;
 }
 
+.btn-print {
+    border: none;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    background-color: var(--blue);
+    opacity: 80%;
+}
+.btn-print:hover {
+    opacity: 100%;
+}
+
 
 
 .preview {
     flex: 1;
     margin: 0 5px;
+}
+
+.header-preview {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+}
+
+.personal-info,
+.contact-info {
+    margin-left: 10px;
+    flex:1
+}
+
+.contact-info-area-preview{
+    margin-left: 50px;
+}
+
+.self-summary {
+    margin-left: 10px;
+}
+
+.main-content {
+    display: flex;
+}
+
+.left-column {
+    flex: 1;
+}
+
+.right-column {
+    flex: 1;
+    margin-left: 80px; 
 }

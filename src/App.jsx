@@ -18,6 +18,7 @@ import EducationalInfoView from "./components/preview/EducationInfoView";
 import ExperienceInfoView from "./components/preview/ExperienceInfoView";
 import SkillInfoView from "./components/preview/SkillInfoView";
 import LanguageInfoView from "./components/preview/LanguageInfoView";
+import SelfSummaryInfoView from "./components/preview/SelfSummaryInfoView";
 
 //css
 import './app.css'
@@ -286,9 +287,9 @@ function App() {
   return (
     <div className='app'>
       <div className='editor'>
-        <header>
-          <h1>CV generator</h1>
-            <p className='header-description'>
+        <header className='header-editor'>
+          <h1>CV Generator</h1>
+            <p>
               Create your CV filling the forms and check its changes dinamically in the preview
             </p>
 
@@ -333,14 +334,25 @@ function App() {
       </div>
 
       <div className='preview' ref={(el) => (componentRef = el)}>
-            <PersonalInfoView data={formData.personalInfo}/>
-            <ContactInfoView data={formData.contactInfo}/>
+        <div className='header-preview'>
+          <div className="personal-info"><PersonalInfoView data={formData.personalInfo}/></div>
+          <div className="contact-info"><ContactInfoView data={formData.contactInfo}/></div>
+        </div>
+
+        <SelfSummaryInfoView data={formData.personalInfo}/>
+        
+        <div className='main-content'>
+          <div className='left-column'>
             <EducationalInfoView data={formData.educationalInfo}/>
             <ExperienceInfoView data={formData.experienceInfo}/>
+          </div>
+              
+          <div className='right-column'>
             <SkillInfoView data={formData.skills}/>
             <LanguageInfoView data={formData.languages}/>
+          </div>
+        </div>
       </div>
-      
     </div>
   )
 }

@@ -9,7 +9,7 @@ function EducationalInfoView (prop) {
                     return (
                         <div>
                             <h3>{i.course}, {i.institute}</h3>
-                            <p>{i.startDate} - {i.startDate}</p>
+                            <p>{i.startDate} - {i.graduateDate}</p>
                         </div>
                     )
                 })}
